@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        Вход
+    </div>
+    <div class="card-body">
+    <form action="" method="post"  novalidate>
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="name">Логин:</label>
+            <input type="text" class="form-control" id="name" name="username" value="">
+            {% if form.username.errors %}
+                <ul class="errors">
+            {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+            {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="text" class="form-control" id="password" name="password" value="">
+            {% if form.password.errors %}
+                <ul class="errors">
+            {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+            {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="remember_me" name="remember_me" value="">
+            <label for="remember_me" class="form-check-label">Запомнить меня</label>
+            {% if form.password.errors %}
+                <ul class="errors">
+            {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+            {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+    </div>
+</div>
+    <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+ {% endblock %}
